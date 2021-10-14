@@ -1,4 +1,7 @@
-# Lanturn Bot Public Source Code
+# Lanturn Bot Homebrew Public Source Code
+
+This is a fork of the original Lanturn Bot for personal applications. You can find the source of the original [here](https://gitlab.com/fishguy6564/lanturn-bot-public-source-code)
+
 A Pokemon Sword and Shield raid and seed
 finding discord bot programmed and designed
 by fishguy6564. Credits to algorithms used
