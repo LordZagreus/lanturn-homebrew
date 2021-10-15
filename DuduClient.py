@@ -19,12 +19,14 @@ import binascii
 import struct
 from PK8 import *
 from NumpadInterpreter import *
+import Serialize
+import env
 
 
 #Get yuor switch IP from the system settings under the internet tab
 #Should be listed under "Connection Status" as 'IP Address'
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-s.connect(("YOUR SWITCH IP", 6000))
+s.connect((env.LOCALIP, 6000))
 code = ""
 
 def sendCommand(s, content):
@@ -78,7 +80,8 @@ def convertToBytes(arr):
 #For the new sys-botbase
 #Allows for faster and more reliable inputs
 def sendCmdHelper(s, cmd):
-    sendCommand(s, cmd)
+    send = sendCommand(s, cmd)
+    print(Serialize.transcieve_placecode(send))
     time.sleep(0.55)
     echo = s.recv(689)
     strng = convertToString(echo[0:-2])

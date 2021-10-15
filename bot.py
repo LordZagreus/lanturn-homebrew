@@ -2,8 +2,9 @@ import discord
 from discord.ext import commands
 import asyncio
 import sys
+import env
 
-TOKEN = 'YOUR TOKEN HERE'
+TOKEN = env.TOKEN
 
 client = commands.Bot(command_prefix = '$')
 client.remove_command('help')
@@ -31,7 +32,7 @@ async def on_message(message):
 #Please put the admin's discord ID where indicated
 @client.command()
 async def logout(ctx):
-	if ctx.message.author.id in [ADMINS DISCORD ID AS INT]:
+	if ctx.message.author.id in [env.PRIVILEGED]:
 		await ctx.send('```Shutting down...```')
 		await client.logout()
 	else:
