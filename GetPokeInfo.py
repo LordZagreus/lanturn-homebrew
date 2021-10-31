@@ -60,6 +60,8 @@ def checkSearchStatus():
 			outData.append(0)
 			fileIn.seek(0)
 			fileIn.write(bytes(outData))
+			for i in fileIn.lines():
+				print(Serialize(i))
 			fileIn.close()
 			return True
 		

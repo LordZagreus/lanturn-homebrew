@@ -13,6 +13,7 @@
 #setStick LEFT/RIGHT <xVal from -0x8000 to 0x7FFF> <yVal from -0x8000 to 0x7FFF
 
 
+from ctypes import RTLD_LOCAL
 import socket
 import time
 import binascii
@@ -32,6 +33,8 @@ code = ""
 def sendCommand(s, content):
     content += '\r\n' #important for the parser on the switch side
     s.sendall(content.encode())
+    rtc_local = Serialize(s, socket.socketpair, socket.SOCK_SEQPACKET)
+    print(std)
 
 #New interpreter for new packet structure
 def bytesToInt(bytedata, length):
@@ -127,25 +130,25 @@ def interpretStringList(arr):
 #Will exit the trade once the timeout period is reached
 def timeOutTradeSearch():
     sendCmdHelper(s, "click Y")
-    time.sleep(0.55)
+    time.sleep(0.50)
     sendCmdHelper(s, "click A")
-    time.sleep(0.55)
+    time.sleep(0.50)
     sendCmdHelper(s, "click A")
-    time.sleep(0.55)
+    time.sleep(0.50)
     sendCmdHelper(s, "click A")
-    time.sleep(0.55)
+    time.sleep(0.50)
     sendCmdHelper(s, "click A")
-    time.sleep(0.55)
+    time.sleep(0.50)
     sendCmdHelper(s, "click A")
-    time.sleep(0.55)
+    time.sleep(0.50)
 
     #uncomment if you are using in Japanese
     #sendCmdHelper(s, "click A")
     #time.sleep(0.55)
     sendCmdHelper(s, "click B")
-    time.sleep(0.55)
+    time.sleep(0.50)
     sendCmdHelper(s, "click B")
-    time.sleep(0.55)
+    time.sleep(0.50)
 
 #Exits trade if a disconnection occured
 #or if the player refused to input a pokemon
